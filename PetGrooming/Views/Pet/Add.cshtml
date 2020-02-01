@@ -1,14 +1,46 @@
-﻿
-@{
-    ViewBag.Title = "Add";
-}
+﻿odel Add<PetGrooming.Models.Pet>
+    @{
+        ViewBag.Title = "Add";
+    }
 
-<h2>Add a New Pet</h2>
+    <h2>Add</h2>
 
-<form method="POST" action="/Pet/Add">
+    <form method="post" action="/Pet/Add">
 
-    <span>Name:</span><input id="PetName" type="text" name="PetName"/> 
-    <span>Weight:</span><input id="PetWeight" type="text" name="PetWeight"/>
-    <input type="submit" value="Add Pet">
-</form>
+
+        <label for="PetName"> Name:</label>
+        <input type="text" name="PetName" id="PetName" />
+
+        <label for="SpeciesID" Species:</label>
+        <select type="text" name="SpeciesID" id="SpeciesID" />
+        {
+        foreach (var species in Model)
+        {
+        <option value="species.SpeciesID>species.Name</option>"
+                }
+                }
+    </select>
+
+    <label for="PetWeight">Weight:</label>
+    <input type="text" name="PetWeight" id="PetWeight" />
+
+    <label for="PetColor">Color:</label>
+    <input type="text" name="PetColor" id="PetColor" />
+
+    <label for="PetNotes">Notes:</label>
+    <textarea name="PetNotes" id="PetNotes">
+    </textarea>
+
+    <input type="submit" value="Add" />
+
+    </form>
+
+    <div>
+        <a href="/Pet/List">Back To List</a>
+    </div>
+
+
+
+
+
 

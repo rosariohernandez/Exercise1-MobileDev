@@ -1,0 +1,35 @@
+﻿@model Delete<PetGrooming.Models.Pet>
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete a Pet</h2>
+
+
+<form action="/Pet/Delete/@Model.pet.PetID" method="POST">
+    <span>Pet Name</span><input type="text" value="@Model.pet.PetName" id="PetName" name="PetName" /><br />
+    <span>Pet Color</span><input type="text" value="@Model.pet.Color" id="PetColor" name="PetColor" /><br />
+    <span>Pet Weight</span><input type="text" value="@Model.pet.Weight" id="PetWeight" name="PetWeight" /><br />
+    <span>Species : </span></span>
+    <select>
+        @{
+            foreach (var species in Model.species)
+            {
+                string selected = "";
+                if (species.SpeciesID == Model.pet.SpeciesID)
+                {
+                    selected = "selected";
+                }
+
+                <option value="@species.SpeciesID">@species.Name</option>
+
+            }
+        }}
+    </select>
+    <div>
+        <span>Pet Notes</span>
+        <textarea id="PetNotes" name="PetNotes">@Model.pet.Notes</textarea>
+    </div>
+    <input type="submit" value="Delete Pet" />
+</form>
+

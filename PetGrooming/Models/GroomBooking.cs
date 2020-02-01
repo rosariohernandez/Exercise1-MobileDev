@@ -8,41 +8,29 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PetGrooming.Models
 {
-    public class GroomBooking
+    public class Groomer
     {
-        /*
-            A GroomBooking is an agreement between an owner and a groomer to provide services for a pet
-            
-            Some things that describe a GroomBooking
-                - A date and time
-                - Price
-            
-            A GroomBooking must reference
-                - A Groomer
-                - A Pet
-                - An Owner
-                - A list of GroomServices
-                
-        */
         [Key]
-        public string BookingID{ get; set; }
-        public string Date{ get; set; }
-        public int Time{ get; set; }
-        public string ServiceType { get; set; }
-        public int Price { get; set; }
-        public int DiscountCoupon { get; set; }
-        public string GroomerID { get; set; }
-        public string PetID { get; set; }
-        public bool OwnerName { get; set; }
-
-
-
         public int GroomerID { get; set; }
-        [ForeignKey("GroomerID")]
-        public int PetID { get; set; }
-        [ForeignKey("PetID")]
-        public int OwnerID { get; set; }
-        [ForeignKey("OwnerID")]
-        public virtual Species Species { get; set; }
+        public string GroomerFName { get; set; }
+        public string GroomerLName { get; set; }
+        public DateTime GroomerDOB { get; set; }
+
+        //Described in CENTS per hour (i.e. $25/hr = 2500cents/hr)
+        public int GroomerRate { get; set; }
+        /* 
+            A groomer is someone who is employed to groom pets
+            Some things that describe a groomer
+                - First Name
+                - Last Name
+                - Date of Birth
+                - Phone Number
+                - Hourly Rate
+
+            A booking must reference to a groomer
+        */
+
+        //Representing the "Many" in (One Booking to many Groomers)
+        public ICollection<GroomBooking> GroomBookings { get; set; }
     }
 }

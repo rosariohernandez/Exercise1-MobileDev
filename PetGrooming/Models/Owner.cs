@@ -22,28 +22,19 @@ namespace PetGrooming.Models
             An owner must reference a list of pets
             
         */
-        [Key]
-        public string OwnerID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public int PhoneHome { get; set; }
-        public int PhoneWork { get; set; }
-        public string Email { get; set; }
-        public string PreferedContact{ get; set; }
-        public bool PetID { get; set; }
-        public bool PetInsurance { get; set; }
+        public int OwnerID { get; set; }
+        public string OwnerFname { get; set; }
+        public string OwnerLname { get; set; }
+        public string OwnerAddress { get; set; }
+        public string OwnerWorkPhone { get; set; }
+        public string OwnerHomePhone { get; set; }
 
 
+        //Representing the "Many" in (One Booking to many Owners)
+        public ICollection<GroomBooking> GroomBookings { get; set; }
 
+        //Representing the "Many" in (Many Owners to Many Pets)
+        public ICollection<Pet> Pets { get; set; }
 
-
-
-        //Representing the One in (One Owner to Many Pets)
-
-        public int PetID { get; set; }
-        [ForeignKey("PetID")]
-        public virtual Pet Species { get; set; }
     }
 }

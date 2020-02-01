@@ -1,0 +1,14 @@
+﻿@model Delete<PetGrooming.Models.Species>
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete a Species</h2>
+
+
+<form action="/species/Delete/@Model.species.SpeciesID" method="POST">
+    <span>Species Name</span><input type="text" value="@Model.species.SpeciesName" id="speciesName" name="SpeciesName" /><br />
+
+    <input type="submit" value="Delete Pet" />
+</form>
+

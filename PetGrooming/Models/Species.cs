@@ -23,6 +23,6 @@ namespace PetGrooming.Models
         public int PetID { get; set; }
         [ForeignKey("PetID")]
         public virtual Pet Pet { get; set; }
-       
+
     }
 }
